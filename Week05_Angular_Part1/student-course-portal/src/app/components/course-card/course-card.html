@@ -1,4 +1,9 @@
-<div class="course-card" [ngClass]="cardClasses" [ngStyle]="{'border-left': '4px solid ' + borderColor}" appHighlight="lightyellow">
+<div
+  class="course-card"
+  [ngClass]="cardClasses"
+  [ngStyle]="{ 'border-left': '4px solid ' + borderColor }"
+  appHighlight="lightyellow"
+>
   <h3>{{ course?.name }}</h3>
   <p>Code: {{ course?.code }}</p>
   <p>Credits: {{ course?.credits | creditLabel }}</p>

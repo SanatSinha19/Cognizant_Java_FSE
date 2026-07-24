@@ -8,7 +8,7 @@ import { CourseSummaryWidget } from '../../components/course-summary-widget/cour
   selector: 'app-home',
   imports: [FormsModule, CommonModule, CourseSummaryWidget],
   templateUrl: './home.html',
-  styleUrl: './home.css'
+  styleUrl: './home.css',
 })
 export class Home implements OnInit, OnDestroy {
   portalName = 'Student Course Portal';
@@ -19,16 +19,16 @@ export class Home implements OnInit, OnDestroy {
 
   constructor(private courseService: CourseService) {}
 
-  onEnrollClick() {
+  onEnrollClick(): void {
     this.message = 'Enrollment opened!';
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     console.log('HomeComponent initialised — courses loaded');
     this.coursesCount = this.courseService.getCourses().length;
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     console.log('HomeComponent destroyed');
   }
 }

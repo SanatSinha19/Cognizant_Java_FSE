@@ -23,9 +23,15 @@
   color: white;
   margin: 4px 0;
 }
-.badge--passed { background-color: green; }
-.badge--failed { background-color: red; }
-.badge--pending { background-color: grey; }
+.badge--passed {
+  background-color: green;
+}
+.badge--failed {
+  background-color: red;
+}
+.badge--pending {
+  background-color: grey;
+}
 .details {
   margin-top: 8px;
   font-size: 0.9rem;

@@ -6,12 +6,12 @@ import { NotificationService } from '../../services/notification';
   imports: [],
   providers: [NotificationService],
   templateUrl: './notification.html',
-  styleUrl: './notification.css'
+  styleUrl: './notification.css',
 })
 export class Notification {
   constructor(private notificationService: NotificationService) {}
 
-  send() {
+  send(): void {
     this.notificationService.notify('Test notification');
   }
 }

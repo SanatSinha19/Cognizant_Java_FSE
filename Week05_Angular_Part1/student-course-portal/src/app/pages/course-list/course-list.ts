@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CourseCard } from '../../components/course-card/course-card';
 import { CourseService } from '../../services/course';
@@ -8,19 +8,19 @@ import { Course } from '../../models/course.model';
   selector: 'app-course-list',
   imports: [CommonModule, CourseCard],
   templateUrl: './course-list.html',
-  styleUrl: './course-list.css'
+  styleUrl: './course-list.css',
 })
 export class CourseList implements OnInit {
-  courses: Course[] = [];
-  isLoading = true;
-  selectedCourseId: number | null = null;
+  courses = signal<Course[]>([]);
+  isLoading = signal(true);
+  selectedCourseId = signal<number | null>(null);
 
   constructor(private courseService: CourseService) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     setTimeout(() => {
-      this.courses = this.courseService.getCourses();
-      this.isLoading = false;
+      this.courses.set(this.courseService.getCourses());
+      this.isLoading.set(false);
     }, 1500);
   }
 
@@ -28,8 +28,8 @@ export class CourseList implements OnInit {
     return course.id;
   }
 
-  onEnroll(courseId: number) {
+  onEnroll(courseId: number): void {
     console.log('Enrolling in course: ' + courseId);
-    this.selectedCourseId = courseId;
+    this.selectedCourseId.set(courseId);
   }
 }

@@ -9,17 +9,17 @@ import { Course } from '../../models/course.model';
   selector: 'app-course-card',
   imports: [CommonModule, Highlight, CreditLabelPipe],
   templateUrl: './course-card.html',
-  styleUrl: './course-card.css'
+  styleUrl: './course-card.css',
 })
 export class CourseCard implements OnChanges {
-  @Input() course: Course | undefined;
+  @Input() course!: Course;
   @Output() enrollRequested = new EventEmitter<number>();
 
   isExpanded = false;
 
   constructor(private enrollmentService: EnrollmentService) {}
 
-  ngOnChanges(changes: SimpleChanges) {
+  ngOnChanges(changes: SimpleChanges): void {
     if (changes['course']) {
       console.log('Previous value:', changes['course'].previousValue);
       console.log('Current value:', changes['course'].currentValue);
@@ -30,24 +30,27 @@ export class CourseCard implements OnChanges {
     return {
       'card--enrolled': this.course ? this.enrollmentService.isEnrolled(this.course.id) : false,
       'card--full': this.course ? this.course.credits >= 4 : false,
-      'expanded': this.isExpanded
+      expanded: this.isExpanded,
     };
   }
 
   get borderColor(): string {
     if (!this.course) return '#ccc';
     switch (this.course.gradeStatus) {
-      case 'passed': return 'green';
-      case 'failed': return 'red';
-      default: return 'grey';
+      case 'passed':
+        return 'green';
+      case 'failed':
+        return 'red';
+      default:
+        return 'grey';
     }
   }
 
-  toggleExpanded() {
+  toggleExpanded(): void {
     this.isExpanded = !this.isExpanded;
   }
 
-  onEnrollClick() {
+  onEnrollClick(): void {
     if (!this.course) return;
     if (this.enrollmentService.isEnrolled(this.course.id)) {
       this.enrollmentService.unenroll(this.course.id);

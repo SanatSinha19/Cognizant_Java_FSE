@@ -6,5 +6,5 @@ import { StudentProfile } from './pages/student-profile/student-profile';
 export const routes: Routes = [
   { path: '', component: Home },
   { path: 'courses', component: CourseList },
-  { path: 'profile', component: StudentProfile }
+  { path: 'profile', component: StudentProfile },
 ];

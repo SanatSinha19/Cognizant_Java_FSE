@@ -8,7 +8,7 @@ import { Course } from '../../models/course.model';
   selector: 'app-student-profile',
   imports: [CommonModule, Notification],
   templateUrl: './student-profile.html',
-  styleUrl: './student-profile.css'
+  styleUrl: './student-profile.css',
 })
 export class StudentProfile {
   constructor(private enrollmentService: EnrollmentService) {}

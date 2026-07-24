@@ -5,7 +5,7 @@ import { CourseService } from '../../services/course';
   selector: 'app-course-summary-widget',
   imports: [],
   templateUrl: './course-summary-widget.html',
-  styleUrl: './course-summary-widget.css'
+  styleUrl: './course-summary-widget.css',
 })
 export class CourseSummaryWidget {
   constructor(private courseService: CourseService) {}
@@ -14,13 +14,13 @@ export class CourseSummaryWidget {
     return this.courseService.getCourses().length;
   }
 
-  addSampleCourse() {
+  addSampleCourse(): void {
     this.courseService.addCourse({
       id: Date.now(),
       name: 'New Sample Course',
       code: 'CS' + Math.floor(Math.random() * 900 + 100),
       credits: 3,
-      gradeStatus: 'pending'
+      gradeStatus: 'pending',
     });
   }
 }
