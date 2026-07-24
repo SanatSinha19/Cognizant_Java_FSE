@@ -1,0 +1,19 @@
+Angular Project Files - Notes
+
+angular.json - Workspace configuration file; defines build/serve/test settings, file paths, and project-level options for the Angular CLI.
+
+tsconfig.json - Base TypeScript compiler configuration shared across the whole workspace (target JS version, strictness rules, module resolution).
+
+tsconfig.app.json - Extends tsconfig.json specifically for the application build (excludes test files, sets app-specific compiler options).
+
+package.json - Lists project dependencies (Angular packages, RxJS, etc.), scripts (ng serve, ng build, ng test), and project metadata.
+
+src/main.ts - The application's entry point; bootstraps the root component (or AppModule) to start the Angular app in the browser.
+
+src/app/app.config.ts - Standalone Angular's application-wide configuration (providers like router, HTTP client) — replaces app.module.ts in this modern standalone setup.
+
+src/app/app.component.ts - The root component of the application; the first component Angular renders, acts as the shell containing <router-outlet>.
+
+src/index.html - The single HTML page of the SPA; contains the <app-root> tag where Angular injects the entire application.
+
+angular.json budgets - Defined under architect > build > configurations > production. The "initial" budget (maximumWarning: 500kB, maximumError: 1MB) governs the total initial JS bundle size — a build warns past 500kB and fails past 1MB. The "anyComponentStyle" budget (maximumWarning: 4kB, maximumError: 8kB) applies the same warning/error logic per-component to individual .css files, catching bloated component stylesheets. These thresholds protect production builds from silent bundle-size regressions.
