@@ -17,6 +17,7 @@
   <div>
     <button (click)="onEnrollClick()">{{ isEnrolled() ? 'Unenroll' : 'Enroll' }}</button>
     <button (click)="toggleExpanded()">Show Details</button>
+    <a [routerLink]="['/courses', course?.id]">View Full Page</a>
   </div>
 
   <div *ngIf="isExpanded" class="details">
