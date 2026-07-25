@@ -15,6 +15,7 @@ Weekly hands-on submissions for the Cognizant Digital Nurture 5.0 Java FSE progr
 |  3   | Spring REST using Spring Boot 3               | ✅ Completed |
 |  4   | Microservices (Account & Loan services)       | ✅ Completed |
 |  5   | Angular v20 — Student Course Portal           | ✅ Completed |
+|  6   | Version Control with Git                      | ✅ Completed |
 
 > Refer to this README file for a detailed week-by-week breakdown of the work completed, exercises solved, concepts learned, and key takeaways.
 
@@ -27,6 +28,7 @@ Weekly hands-on submissions for the Cognizant Digital Nurture 5.0 Java FSE progr
 - [Week 3 — Spring REST using Spring Boot 3](#week-3--spring-rest-using-spring-boot-3)
 - [Week 4 — Microservices with Spring Boot 3 | Account & Loan Services](#week-4--microservices-with-spring-boot-3--account--loan-services)
 - [Week 5 — Angular (v20) Hands-On | Student Course Portal](#week-5--angular-v20-hands-on--student-course-portal)
+- [Week 6 — Version Control with Git](#week-6--version-control-with-git)
 
 ---
 
@@ -507,3 +509,74 @@ ng serve
 ```
 
 Navigate to `http://localhost:4200/`.
+
+---
+
+## Week 6 — Version Control with Git
+
+_Digital Nurture 5.0 — Java FSE Track_
+
+Covers Git fundamentals through 5 hands-on labs: configuration and first commits, `.gitignore`, branching and merging, merge conflict resolution, and remote sync practices.
+
+### Hands-On Exercises Completed
+
+|  #  | Topic                            | Status                             |
+| :-: | :------------------------------- | :--------------------------------- |
+|  1  | Git Configuration & First Commit | ✅ Done                            |
+|  2  | `.gitignore`                     | ✅ Done                            |
+|  3  | Branching and Merging            | ✅ Done                            |
+|  4  | Merge Conflict Resolution        | ✅ Done                            |
+|  5  | Cleanup and Remote Sync          | ✅ Done (adapted — see note below) |
+
+### Approach
+
+All 5 hands-on labs were practiced in a separate local-only repository (`git-practice`), kept independent from this submission repo to avoid nested Git repositories and to allow safe experimentation with branches, conflicts, and history rewrites. Each lab's terminal output was then documented and copied into this folder for evaluation.
+
+> **Adaptation note:** The original exercise documents reference GitLab, notepad++, and P4Merge. Since a working GitHub account and VS Code setup were already in place from Weeks 1–5, GitHub was used in place of GitLab (same underlying Git commands), and VS Code's built-in merge conflict UI was used in place of notepad++ / P4Merge — a more modern, equally valid substitute for the same learning objectives.
+
+### What Each Hands-On Covered
+
+#### Git-HOL 1 — Configuration & First Commit
+
+Set global `user.name`, `user.email`, and `core.editor`. Initialized a new repository, created and committed a first file, and verified clean working tree state throughout.
+
+#### Git-HOL 2 — .gitignore
+
+Created a `.log` file and a `log/` folder, then added ignore rules to `.gitignore`. Confirmed via `git status` that both were excluded from tracking entirely, despite still existing on disk.
+
+#### Git-HOL 3 — Branching and Merging
+
+Created a branch, added a file on it, committed, and merged back into `master` via a fast-forward merge (no divergent history). Visualized the result with `git log --oneline --graph --decorate`, then deleted the merged branch as cleanup.
+
+#### Git-HOL 4 — Merge Conflict Resolution
+
+Deliberately created an "add/add" conflict by adding the same file (`hello.xml`) with different content on two separate branches. Resolved the conflict using VS Code's built-in merge UI ("Accept Both Changes"), committed the resolution, and confirmed the resulting **merge commit** (two converging parent lines) in the log graph — contrasting directly with Git-HOL 3's clean fast-forward.
+
+#### Git-HOL 5 — Cleanup and Remote Sync
+
+Verified a clean working tree and branch state as the final check before syncing. Documented the intended `pull`-then-`push` remote workflow conceptually, since this exact cycle was already demonstrated for real throughout Weeks 1–5 against the actual `Cognizant_Java_FSE` GitHub remote.
+
+### Key Concepts Learned
+
+- Git's three-tree model: working directory, staging area, and repository (commit history).
+- `.gitignore` patterns operate at the file-tracking level — ignored files still exist, Git just never offers to track them.
+- Fast-forward merges (no diverging history) vs. true merge commits (diverging history, requires reconciliation) are visually distinct in `git log --graph`.
+- "add/add" conflicts occur when two branches independently create the same file with different content — Git cannot auto-resolve and inserts conflict markers directly into the file.
+- A conflicted file must still be explicitly staged (`git add`) and committed after manual resolution to complete the merge.
+- Safe branch deletion (`git branch -d`) only succeeds once Git confirms the branch's changes are fully merged, preventing accidental data loss.
+
+### Tech Stack
+
+Git · GitHub · VS Code (merge conflict resolution UI, default commit editor)
+
+### Folder Structure
+
+```
+Week06_Git/
+├── Git-HOL-1-Output.md
+├── Git-HOL-2-Output.md
+├── Git-HOL-3-Output.md
+├── Git-HOL-4-Output.md
+├── Git-HOL-5-Output.md
+└── README.md
+```
